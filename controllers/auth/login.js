@@ -18,6 +18,9 @@ const login = async (req, res, next) => {
   if (!passResult) {
     next(makeError(401, "Пароль або пошта невірні"));
   }
+  if(!result.verify){
+    next(makeError(403,'Ви не пройшли підтвердження'))
+  }
   const token = jwt.sign({ id: result._id }, SECRET_KEY, { expiresIn: "23h" });
   await User.findByIdAndUpdate(result._id, { token });
   res

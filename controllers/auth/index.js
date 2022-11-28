@@ -4,6 +4,8 @@ const logout = require('./logout')
 const current = require('./current')
 const patchSub = require('./patchSub')
 const patchAvatar = require('./patchAvatar')
+const verify = require('./verify')
+const repVerify = require('./repVerify')
 
 module.exports = {
     register,
@@ -11,5 +13,7 @@ module.exports = {
     logout,
     current,
     patchSub,
-    patchAvatar
+    patchAvatar,
+    verify,
+    repVerify
 }

@@ -24,6 +24,14 @@ const usersSchema = new Schema({
         },
         avatarUrl :{
           type: String
+        },
+        verify: {
+          type: Boolean,
+          default: false
+        },
+        verificationToken:{
+          type: String,
+          require: true
         }
     }, {versionKey: false, timestamps: true})
     usersSchema.post("save", onSaveErrors);
@@ -34,6 +42,7 @@ const validateRegisterSchema = Joi.object({
     password: Joi.string().required(),
     subscription: Joi.string().valid(...subscriptionArray)
 })
+
 
 const User = model('user',usersSchema)
 
